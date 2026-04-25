@@ -23,7 +23,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('add');
     }
 
     /**
@@ -31,7 +31,13 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        admin::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password
+        ]);
+        return redirect()->route('admin.index');
     }
 
     /**
