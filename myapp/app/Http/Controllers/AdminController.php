@@ -53,7 +53,8 @@ class AdminController extends Controller
      */
     public function edit(admin $admin)
     {
-        //
+        $admin = admin::find($admin->id);
+        return view('edit' , compact('admin'));
     }
 
     /**
@@ -61,7 +62,12 @@ class AdminController extends Controller
      */
     public function update(Request $request, admin $admin)
     {
-        //
+            $admin->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password
+        ]);
+        return redirect()->route('admin.index');
     }
 
     /**

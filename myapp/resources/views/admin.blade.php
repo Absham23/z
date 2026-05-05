@@ -19,6 +19,7 @@
         <th>Id</th>
         <th>Name</th>
         <th>Email</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -27,6 +28,7 @@
         <td>{{ $item->id }}</td>
         <td>{{ $item->name }}</td>
         <td>{{ $item->email }}</td>
+        <td><a href="{{ route('admin.edit' , $item->id)}}" class="btn btn-success">Edit</a></td>
       </tr>
       @endforeach
     </tbody>
