@@ -37,7 +37,7 @@ class AdminController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ]);
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('alert' , 'Data Inserted successfully');
     }
 
     /**
@@ -67,7 +67,7 @@ class AdminController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ]);
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('alert' , 'Data Updated successfully');
     }
 
     /**
@@ -75,6 +75,7 @@ class AdminController extends Controller
      */
     public function destroy(admin $admin)
     {
-        //
+        $admin->delete();
+        return redirect()->route('admin.index')->with('alert' , 'Data deleted successfully');
     }
 }
